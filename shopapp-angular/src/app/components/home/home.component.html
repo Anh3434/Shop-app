@@ -1,0 +1,147 @@
+<app-header></app-header>
+<div class="container">
+    <div class="intro-section">
+        <h1>Home</h1>
+    </div>
+    <div class="search-box">
+        <input type="text" class="form-control search-input" placeholder="Search products" [(ngModel)]="keyword">
+        <select class="form-control product-category" [(ngModel)]="selectedCategoryId">
+            <option [value]="0">All</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+                {{ category.name }}
+            </option>
+        </select>
+        <button class="form-control search-button" (click)="searchProducts()">Search</button>
+    </div>
+    <div class="row">
+        <!-- <div class="col-lg-4 col-md-6">
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                    alt="Product Image" class="product-image">
+                <h3 class="product-name">Product 1</h3>
+                <p class="product-description"></p>
+                <p class="product-price">Price: <del>$150</del> $100</p>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="product-action">
+                    <button class="btn btn-primary">Add to cart</button>
+                    <span class="space-x"></span>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                    alt="Product Image" class="product-image">
+                <h3 class="product-name">Product 1</h3>
+                <p class="product-description"></p>
+                <p class="product-price">Price: <del>$150</del> $100</p>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="product-action">
+                    <button class="btn btn-primary">Add to Cart</button>
+                    <span class="space-x"></span>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                    alt="Product Image" class="product-image">
+                <h3 class="product-name">Product 1</h3>
+                <p class="product-description"></p>
+                <p class="product-price">Price: <del>$150</del> $100</p>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="product-action">
+                    <button class="btn btn-primary">Add to cart</button>
+                    <span class="space-x"></span>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="col-lg-4 col-md-6">
+            <div class="product-item">
+                <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
+                    alt="Product Image" class="product-image">
+                <h3 class="product-name">Product 1</h3>
+                <p class="product-description"></p>
+                <p class="product-price">Price: <del>$150</del> $100</p>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="product-action">
+                    <button class="btn btn-primary">Add to cart</button>
+                    <span class="space-x"></span>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-lg-4 col-md-6" *ngFor="let product of products">
+            <div class="product-item">
+                <img [src]="product.url" alt="Product Image" class="product-image">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-price">Price: ${{ product.price }}</p>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                </div>
+                <div class="product-action">
+                    <button class="btn btn-primary">Add to cart</button>
+                    <span class="space-x"></span>
+                    <button class="btn btn-success">Buy now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" *ngIf="currentPage > 0">
+                <a class="page-link" href="#" (click)="onPageChange(0)">First</a>
+            </li>
+            <li class="page-item" *ngIf="currentPage > 0">
+                <a class="page-link" href="#" (click)="onPageChange(currentPage - 1)">Previous</a>
+            </li>
+            <ng-container *ngFor="let page of visiblePages">
+                <li class="page-item" [ngClass]="{'active': page === currentPage}">
+                    <a class="page-link" href="#" (click)="onPageChange(page)">{{ page + 1}}</a>
+                </li>
+            </ng-container>
+            <li class="page-item" *ngIf="currentPage < totalPages">
+                <a class="page-link" href="#" (click)="onPageChange(currentPage + 1)">Next</a>
+            </li>
+            <li class="page-item" *ngIf="currentPage < totalPages">
+                <a class="page-link" href="#" (click)="onPageChange(totalPages)">Last</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<app-footer></app-footer>

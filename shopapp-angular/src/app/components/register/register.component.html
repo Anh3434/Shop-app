@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container">
+    <form #registerForm="ngForm">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="login-form mx-auto">
+                    <h2 class="login-header">Register</h2>
+                    <div class="form-group">
+                        <label for="full-name">Fullname</label>
+                        <input type="text" class="form-control" [(ngModel)]="fullName" name="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-of-birth">Date of Birth</label>
+                        <input type="date" class="form-control" [(ngModel)]="dateOfBirth" name="dateOfBirth" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" [(ngModel)]="phone" (input)="onPhoneChange()" class="form-control"
+                            name="phone" (focus)="registerForm.form.markAsTouched()" required>
+                        <p class="text-danger" *ngIf="phone.length < 6 && registerForm.form.touched">At least 6
+                            characters
+                        </p>
+                    </div>
+                    <div class="form-group password-field">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="password" required
+                            placeholder="At least 3 characters">
+                        <p class="text-danger" *ngIf="password.length < 3 && registerForm.form.touched">At least 3
+                            characters
+                        </p>
+                        <i class="password-toggle fas fa-eye-slash"></i>
+                    </div>
+                    <div class="form-group password-field">
+                        <label for="retype-password">Confirm password</label>
+                        <input type="password" class="form-control" name="retypePassword" [(ngModel)]="retypePassword"
+                            required placeholder="At least 3 characters"
+                            (input)="registerForm.form.markAsTouched(); checkPasswordMatch()">
+                        <p class="text-danger" *ngIf="retypePassword.length < 3 && registerForm.form.touched">At least 3
+                            characters
+                        </p>
+                        <p class="text-danger"
+                            *ngIf="registerForm.controls['retypePassword']?.hasError('passwordMissMatch') && registerForm.form.touched">
+                            Password does not match
+                        </p>
+                        <i class="password-toggle fas fa-eye-slash"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" [(ngModel)]="address" name="address">
+                    </div>
+                    <button type="button" class="login-button" (click)="register()">Register</button>
+                    <div class="divider"></div>
+                    <span>
+                        <p>Do you already have an account?
+                            <a href="#" class="register-link">Login now</a>
+                        </p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
