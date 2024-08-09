@@ -12,5 +12,5 @@ Shop app is an application that allows users to perform various actions related 
 - Search products by categories
 
 ## Installation
-- Use SQL script in sql-script folder to create database
+- Use the database.sql file to create the database
 - Config database credential in application.yml
